@@ -8,25 +8,74 @@ import org.junit.jupiter.api.Test;
 class CarroTest {
 
 	@Test
-	void testLigar() {
+	void testLigarComMais10Combustivel() {
 		Carro veiculo = new Carro();
+		veiculo.combustivel += 10;
 		veiculo.ligar();
 		Assert.assertTrue(veiculo.isLigado);
 	}
 
 	@Test
-	void testAcelerar() {
-		fail("Not yet implemented");
+	void testLigarCom0Combustivel() {
+		Carro veiculo = new Carro();
+		veiculo.combustivel = 0;
+		veiculo.ligar();
+		Assert.assertFalse(veiculo.isLigado);
+	}
+
+	
+	@Test
+	void testAcelerarLigado() {
+		Carro veiculo = new Carro();
+		veiculo.isLigado = true;
+		veiculo.velocidade = 0;
+		veiculo.acelerar();
+		int velocidadeFinal = veiculo.potencia;
+		Assert.assertEquals(velocidadeFinal, veiculo.velocidade);
+	}
+	
+	@Test
+	void testAcelerarDesligado() {
+		Carro veiculo = new Carro();
+		veiculo.isLigado = false;
+		veiculo.velocidade = 0;
+		veiculo.acelerar();
+		int velocidadeFinal = 0;
+		Assert.assertEquals(velocidadeFinal, veiculo.velocidade);
 	}
 
 	@Test
-	void testDesligar() {
-		fail("Not yet implemented");
+	void testDesligarCarroLigado() {
+		Carro veiculo = new Carro();
+		veiculo.isLigado = true;
+		veiculo.desligar();
+		Assert.assertFalse(veiculo.isLigado);
+	}
+	
+	@Test
+	void testDesligarCarroDesligado() {
+		Carro veiculo = new Carro();
+		veiculo.isLigado = false;
+		veiculo.desligar();
+		Assert.assertFalse(veiculo.isLigado);
 	}
 
 	@Test
-	void testFrear() {
-		fail("Not yet implemented");
+	void testFrearVelocidade100() {
+		Carro veiculo = new Carro();
+		veiculo.velocidade = 100;
+		veiculo.frear();
+		Assert.assertEquals(90, veiculo.velocidade);
 	}
 
+
+	@Test
+	void testFrearVelocidade9() {
+		Carro veiculo = new Carro();
+		veiculo.velocidade = 9;
+		veiculo.frear();
+		Assert.assertEquals(0, veiculo.velocidade);
+	}
+
+	
 }
