@@ -1,6 +1,5 @@
 package br.com.proway.capgemini.aulapoo;
 
-import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -10,36 +9,44 @@ class CarroTest {
 	@Test
 	void testLigarComMais10Combustivel() {
 		Carro veiculo = new Carro();
-		veiculo.combustivel += 10;
-		veiculo.ligar();
-		Assert.assertTrue(veiculo.isLigado);
+		CarroController controllerVeiculo = new CarroController();
+		controllerVeiculo.carro = veiculo;
+		controllerVeiculo.carro.combustivel += 10;
+		controllerVeiculo.ligar();
+		Assert.assertTrue(controllerVeiculo.carro.isLigado);
 	}
 
 	@Test
 	void testLigarCom0Combustivel() {
 		Carro veiculo = new Carro();
-		veiculo.combustivel = 0;
-		veiculo.ligar();
-		Assert.assertFalse(veiculo.isLigado);
+		CarroController controllerVeiculo = new CarroController();
+		controllerVeiculo.carro = veiculo;
+		controllerVeiculo.carro.combustivel = 0;
+		controllerVeiculo.ligar();
+		Assert.assertFalse(controllerVeiculo.carro.isLigado);
 	}
 
 	
 	@Test
 	void testAcelerarLigado() {
 		Carro veiculo = new Carro();
-		veiculo.isLigado = true;
-		veiculo.velocidade = 0;
-		veiculo.acelerar();
-		int velocidadeFinal = veiculo.potencia;
-		Assert.assertEquals(velocidadeFinal, veiculo.velocidade);
+		CarroController controllerVeiculo = new CarroController();
+		controllerVeiculo.carro = veiculo;
+		controllerVeiculo.carro.isLigado = true;
+		controllerVeiculo.carro.velocidade = 0;
+		controllerVeiculo.acelerar();
+		int velocidadeFinal = controllerVeiculo.carro.potencia;
+		Assert.assertEquals(velocidadeFinal, controllerVeiculo.carro.velocidade);
 	}
 	
 	@Test
 	void testAcelerarDesligado() {
 		Carro veiculo = new Carro();
-		veiculo.isLigado = false;
-		veiculo.velocidade = 0;
-		veiculo.acelerar();
+		CarroController controllerVeiculo = new CarroController();
+		controllerVeiculo.carro = veiculo;
+		controllerVeiculo.carro.isLigado = false;
+		controllerVeiculo.carro.velocidade = 0;
+		controllerVeiculo.acelerar();
 		int velocidadeFinal = 0;
 		Assert.assertEquals(velocidadeFinal, veiculo.velocidade);
 	}
@@ -47,34 +54,42 @@ class CarroTest {
 	@Test
 	void testDesligarCarroLigado() {
 		Carro veiculo = new Carro();
-		veiculo.isLigado = true;
-		veiculo.desligar();
+		CarroController controllerVeiculo = new CarroController();
+		controllerVeiculo.carro = veiculo;
+		controllerVeiculo.carro.isLigado = true;
+		controllerVeiculo.desligar();
 		Assert.assertFalse(veiculo.isLigado);
 	}
 	
 	@Test
 	void testDesligarCarroDesligado() {
 		Carro veiculo = new Carro();
-		veiculo.isLigado = false;
-		veiculo.desligar();
-		Assert.assertFalse(veiculo.isLigado);
+		CarroController controllerVeiculo = new CarroController();
+		controllerVeiculo.carro = veiculo;
+		controllerVeiculo.carro.isLigado = false;
+		controllerVeiculo.desligar();
+		Assert.assertFalse(controllerVeiculo.carro.isLigado);
 	}
 
 	@Test
 	void testFrearVelocidade100() {
 		Carro veiculo = new Carro();
-		veiculo.velocidade = 100;
-		veiculo.frear();
-		Assert.assertEquals(90, veiculo.velocidade);
+		CarroController controllerVeiculo = new CarroController();
+		controllerVeiculo.carro = veiculo;
+		controllerVeiculo.carro.velocidade = 100;
+		controllerVeiculo.frear();
+		Assert.assertEquals(90, controllerVeiculo.carro.velocidade);
 	}
 
 
 	@Test
 	void testFrearVelocidade9() {
 		Carro veiculo = new Carro();
-		veiculo.velocidade = 9;
-		veiculo.frear();
-		Assert.assertEquals(0, veiculo.velocidade);
+		CarroController controllerVeiculo = new CarroController();
+		controllerVeiculo.carro = veiculo;
+		controllerVeiculo.carro.velocidade = 9;
+		controllerVeiculo.frear();
+		Assert.assertEquals(0, controllerVeiculo.carro.velocidade);
 	}
 
 	

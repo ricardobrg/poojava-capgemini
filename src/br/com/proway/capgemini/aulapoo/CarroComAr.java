@@ -3,6 +3,7 @@ package br.com.proway.capgemini.aulapoo;
 public class CarroComAr extends Carro{
 	
 	boolean isArLigado = false;
+	int velocidade = 0;
 	
 	/**
 	 * Liga o ar condicionado.
@@ -10,6 +11,9 @@ public class CarroComAr extends Carro{
 	 * @return
 	 */
 	public boolean ligarAr() {
+		if(this.isLigado) {
+			this.isArLigado = true;
+		}
 		return this.isArLigado;
 	}
 	
@@ -19,6 +23,7 @@ public class CarroComAr extends Carro{
 	 * @return
 	 */
 	public boolean desligarAr() {
+		this.isArLigado = false;
 		return this.isArLigado;
 	}
 }

@@ -8,7 +8,7 @@ class CarroComArTest {
 	@Test
 	void testLigarArCarroLigado() {
 		CarroComAr carroFresco = new CarroComAr();
-		carroFresco.ligar();
+		carroFresco.isLigado = true;
 		carroFresco.ligarAr();
 		Assert.assertTrue(carroFresco.isArLigado);
 	}
@@ -16,7 +16,7 @@ class CarroComArTest {
 	@Test
 	void testLigarArCarroDesligado() {
 		CarroComAr carroFresco = new CarroComAr();
-		carroFresco.desligar();
+		carroFresco.isLigado = false;
 		carroFresco.ligarAr();
 		Assert.assertFalse(carroFresco.isArLigado);
 	}
@@ -24,8 +24,8 @@ class CarroComArTest {
 	@Test
 	void testDesligarArLigado() {
 		CarroComAr carroFresco = new CarroComAr();
-		carroFresco.ligar();
-		carroFresco.ligarAr();
+		carroFresco.isLigado = true;
+		carroFresco.isArLigado = false;
 		carroFresco.desligarAr();
 		Assert.assertFalse(carroFresco.isArLigado);
 	}
@@ -36,4 +36,5 @@ class CarroComArTest {
 		carroFresco.desligarAr();
 		Assert.assertFalse(carroFresco.isArLigado);
 	}
+
 }
